@@ -1,18 +1,18 @@
 package App.Domain;
 
 public class Stadium {
-    private int StadiumID;
+    private int ID;
     private String StadiumName;
     private String Location;
     private int Capacity;
     private String Team;
 
     public int getStadiumID() {
-        return StadiumID;
+        return ID;
     }
 
     public void setStadiumID(int stadiumID) {
-        StadiumID = stadiumID;
+        ID = stadiumID;
     }
 
     public String getStadiumName() {
@@ -46,5 +46,4 @@ public class Stadium {
     public void setTeam(String team) {
         Team = team;
     }
-
 }
