@@ -7,14 +7,18 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
 
-public class TeamStatsRepository extends BaseRepository<TeamStats>{
+public class TeamStatsRepository extends BaseRepository<TeamStats> {
+
     public TeamStatsRepository(JdbcTemplate databaseConnection) {
         super(databaseConnection);
     }
 
     @Override
     public TeamStats get(String id) throws Exception {
-        return null;
+        String sql = "SELECT * FROM TEAM_STATS WHERE TeamStatID = ?";
+        return this.getDatabaseConnection().queryForObject(sql,
+                BeanPropertyRowMapper.newInstance(TeamStats.class), id);
+
     }
 
     @Override
@@ -26,16 +30,19 @@ public class TeamStatsRepository extends BaseRepository<TeamStats>{
 
     @Override
     public void create(TeamStats teamStats) {
-
+        String sql = "INSERT INTO TEAM_STATS (Team, StatID, TeamStatID) VALUES (?, ?, ?)";
+        this.getDatabaseConnection().update(sql, teamStats.getTeam(), teamStats.getStatID(), teamStats.getTeamStatID());
     }
 
     @Override
     public void delete(String id) {
-
+        String sql = "DELETE FROM TEAM_STATS WHERE TeamStatID = ?";
+        this.getDatabaseConnection().update(sql, id);
     }
 
     @Override
     public void update(String id, TeamStats teamStats) {
-
+        String sql = "UPDATE TEAM_STATS SET Team = ?, StatID = ? WHERE TeamStatID = ?";
+        this.getDatabaseConnection().update(sql, teamStats.getTeam(), teamStats.getStatID(), id);
     }
 }

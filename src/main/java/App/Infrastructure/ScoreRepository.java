@@ -14,28 +14,45 @@ public class ScoreRepository extends BaseRepository<Score> {
 
     @Override
     public Score get(String id) throws Exception {
-        return null;
+        String sql = "SELECT * FROM SCORE WHERE ScoreID = ?";
+            return this.getDatabaseConnection().queryForObject(sql, BeanPropertyRowMapper.newInstance(Score.class), id
+            );
     }
 
     @Override
     public List<Score> get() {
         String sql = "SELECT * FROM SCORE";
-        List<Score> scores = this.getDatabaseConnection().query(sql, BeanPropertyRowMapper.newInstance(Score.class));
-        return scores;
+        return this.getDatabaseConnection().query(sql, BeanPropertyRowMapper.newInstance(Score.class)
+        );
     }
 
     @Override
     public void create(Score score) {
-
+        String sql = "INSERT INTO SCORE (ScoreID, GameID, Team, Points) VALUES (?, ?, ?, ?)";
+        this.getDatabaseConnection().update(
+                sql,
+                score.getScoreID(),
+                score.getGameID(),
+                score.getTeam(),
+                score.getPoints()
+        );
     }
 
     @Override
     public void delete(String id) {
-
+        String sql = "DELETE FROM SCORE WHERE ScoreID = ?";
+        this.getDatabaseConnection().update(sql, id);
     }
 
     @Override
     public void update(String id, Score score) {
-
+        String sql = "UPDATE SCORE SET GameID = ?, Team = ?, Points = ? WHERE ScoreID = ?";
+        this.getDatabaseConnection().update(
+                sql,
+                score.getGameID(),
+                score.getTeam(),
+                score.getPoints(),
+                id
+        );
     }
 }
