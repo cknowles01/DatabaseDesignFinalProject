@@ -11,9 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/Team")
 public class TeamController {
-
     private final TeamRepository teamRepository;
-
     public TeamController(@Autowired JdbcTemplate databaseConnection) {
         this.teamRepository = new TeamRepository(databaseConnection);
     }

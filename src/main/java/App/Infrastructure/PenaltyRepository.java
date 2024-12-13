@@ -28,8 +28,12 @@ public class PenaltyRepository extends BaseRepository<Penalty> {
 
     @Override
     public void create(Penalty penalty) {
-        String sql = "INSERT INTO PENALTY (ID, NAME, DESCRIPTION, YARDSLOST) VALUES (?, ?, ?, ?)";
-        this.getDatabaseConnection().update(sql, penalty.getID(), penalty.getName(), penalty.getDescription(), penalty.getYardsLost());
+        String sql = "INSERT INTO PENALTY (ID, NAME, DESCRIPTION, YARDSLOST, REFEREEID, PLAYERID) VALUES (?, ?, ?, ?, ?, ?)";
+        this.getDatabaseConnection().update(sql, penalty.getID(), penalty.getName(), penalty.getDescription(),
+                penalty.getYardsLost(),
+                penalty.getRefereeId(),
+                penalty.getPlayerId()
+        );
     }
 
     @Override
@@ -40,7 +44,10 @@ public class PenaltyRepository extends BaseRepository<Penalty> {
 
     @Override
     public void update(String id, Penalty penalty) {
-        String sql = "UPDATE PENALTY SET NAME = ?, DESCRIPTION = ?, YARDSLOST = ? WHERE ID = ?";
-        this.getDatabaseConnection().update(sql, penalty.getName(), penalty.getDescription(), penalty.getYardsLost(), id);
+        String sql = "UPDATE PENALTY SET NAME = ?, DESCRIPTION = ?, YARDSLOST = ?, REFEREEID = ?, PLAYERID = ? WHERE ID = ?";
+        this.getDatabaseConnection().update(sql, penalty.getName(), penalty.getDescription(), penalty.getYardsLost(),
+                penalty.getRefereeId(),
+                penalty.getPlayerId(),
+                id);
     }
 }

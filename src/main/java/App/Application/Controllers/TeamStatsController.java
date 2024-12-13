@@ -34,11 +34,13 @@ public class TeamStatsController {
 
     @PostMapping("")
     public void createTeamStats(@RequestBody TeamStats teamStats) {
+        // Ensure LeagueStatID is sent as part of the request body
         teamStatsRepository.create(teamStats);
     }
 
     @PutMapping("/{id}")
     public void updateTeamStats(@PathVariable int id, @RequestBody TeamStats teamStats) {
+        // Ensure LeagueStatID is updated properly
         teamStatsRepository.update(String.valueOf(id), teamStats);
     }
 

@@ -4,6 +4,7 @@ public class TeamStats {
     private int TeamStatID;
     private String Team;
     private int StatID;
+    private Integer LeagueStatID;
 
     // Getter and Setter for TeamStatID
     public int getTeamStatID() {
@@ -30,5 +31,14 @@ public class TeamStats {
 
     public void setStatID(int statID) {
         this.StatID = statID;
+    }
+
+    // Getter and Setter for LeagueStatID
+    public Integer getLeagueStatID() {
+        return LeagueStatID;
+    }
+
+    public void setLeagueStatID(Integer leagueStatID) {
+        this.LeagueStatID = leagueStatID;
     }
 }

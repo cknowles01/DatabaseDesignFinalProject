@@ -18,20 +18,24 @@ public class TeamStatsRepository extends BaseRepository<TeamStats> {
         String sql = "SELECT * FROM TEAM_STATS WHERE TeamStatID = ?";
         return this.getDatabaseConnection().queryForObject(sql,
                 BeanPropertyRowMapper.newInstance(TeamStats.class), id);
-
     }
 
     @Override
     public List<TeamStats> get() {
         String sql = "SELECT * FROM TEAM_STATS";
-        List<TeamStats> teamStats = this.getDatabaseConnection().query(sql, BeanPropertyRowMapper.newInstance(TeamStats.class));
+        List<TeamStats> teamStats = this.getDatabaseConnection().query(sql,
+                BeanPropertyRowMapper.newInstance(TeamStats.class));
         return teamStats;
     }
 
     @Override
     public void create(TeamStats teamStats) {
-        String sql = "INSERT INTO TEAM_STATS (Team, StatID, TeamStatID) VALUES (?, ?, ?)";
-        this.getDatabaseConnection().update(sql, teamStats.getTeam(), teamStats.getStatID(), teamStats.getTeamStatID());
+        String sql = "INSERT INTO TEAM_STATS (TeamStatID, Team, StatID, LeagueStatID) VALUES (?, ?, ?, ?)";
+        this.getDatabaseConnection().update(sql,
+                teamStats.getTeamStatID(),
+                teamStats.getTeam(),
+                teamStats.getStatID(),
+                teamStats.getLeagueStatID());
     }
 
     @Override
@@ -42,7 +46,11 @@ public class TeamStatsRepository extends BaseRepository<TeamStats> {
 
     @Override
     public void update(String id, TeamStats teamStats) {
-        String sql = "UPDATE TEAM_STATS SET Team = ?, StatID = ? WHERE TeamStatID = ?";
-        this.getDatabaseConnection().update(sql, teamStats.getTeam(), teamStats.getStatID(), id);
+        String sql = "UPDATE TEAM_STATS SET Team = ?, StatID = ?, LeagueStatID = ? WHERE TeamStatID = ?";
+        this.getDatabaseConnection().update(sql,
+                teamStats.getTeam(),
+                teamStats.getStatID(),
+                teamStats.getLeagueStatID(),
+                id);
     }
 }

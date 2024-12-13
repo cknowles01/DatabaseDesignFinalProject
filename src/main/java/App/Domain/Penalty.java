@@ -5,6 +5,8 @@ public class Penalty {
     private String Name;
     private String Description;
     private int YardsLost;
+    private Integer refereeId; // Change from int to Integer
+    private Integer playerId;  // Change from int to Integer
 
     // Getter and Setter for ID
     public int getID() {
@@ -40,5 +42,23 @@ public class Penalty {
 
     public void setYardsLost(int YardsLost) {
         this.YardsLost = YardsLost;
+    }
+
+    // Getter and Setter for refereeId
+    public Integer getRefereeId() {
+        return refereeId;
+    }
+
+    public void setRefereeId(Integer refereeId) {
+        this.refereeId = refereeId;
+    }
+
+    // Getter and Setter for playerId
+    public Integer getPlayerId() {
+        return playerId;
+    }
+
+    public void setPlayerId(Integer playerId) {
+        this.playerId = playerId;
     }
 }
