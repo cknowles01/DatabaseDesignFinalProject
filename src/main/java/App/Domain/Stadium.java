@@ -1,6 +1,9 @@
 package App.Domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Stadium {
+    @JsonProperty("stadiumID")
     private int ID;
     private String StadiumName;
     private String Location;
@@ -8,35 +11,35 @@ public class Stadium {
     private String Team;
 
     public int getStadiumID() {
-        return ID;
+        return this.ID;
     }
 
-    public void setStadiumID(int stadiumID) {
-        ID = stadiumID;
+    public void setStadiumID(int ID) {
+        this.ID = ID;
     }
 
     public String getStadiumName() {
         return StadiumName;
     }
 
-    public void setStadiumName(String stadiumName) {
-        StadiumName = stadiumName;
+    public void setStadiumName(String StadiumName) {
+        this.StadiumName = StadiumName;
     }
 
     public String getLocation() {
         return Location;
     }
 
-    public void setLocation(String location) {
-        Location = location;
+    public void setLocation(String Location) {
+        this.Location = Location;
     }
 
     public int getCapacity() {
         return Capacity;
     }
 
-    public void setCapacity(int capacity) {
-        Capacity = capacity;
+    public void setCapacity(int Capacity) {
+        this.Capacity = Capacity;
     }
 
     public String getTeam() {

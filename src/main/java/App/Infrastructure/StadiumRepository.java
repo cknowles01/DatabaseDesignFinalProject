@@ -26,8 +26,9 @@ public class StadiumRepository extends BaseRepository<Stadium> {
 
     @Override
     public void create(Stadium stadium) {
-        String sql = "INSERT INTO STADIUM (ID, StadiumName, Location, Capacity) VALUES (?, ?, ?, ?)";
-        this.getDatabaseConnection().update(sql, stadium.getStadiumID(), stadium.getStadiumName(), stadium.getLocation(), stadium.getCapacity());
+        String sql = "INSERT INTO STADIUM (ID, StadiumName, Location, Capacity, Team) VALUES (?, ?, ?, ?, ?)";
+        this.getDatabaseConnection().update(sql, stadium.getStadiumID(), stadium.getStadiumName(), stadium.getLocation(), stadium.getCapacity(), stadium.getTeam()
+        );
     }
 
     @Override
@@ -38,7 +39,7 @@ public class StadiumRepository extends BaseRepository<Stadium> {
 
     @Override
     public void update(String id, Stadium stadium) {
-        String sql = "UPDATE STADIUM SET StadiumName = ?, Location = ?, Capacity = ? WHERE ID = ?";
-        this.getDatabaseConnection().update(sql, stadium.getStadiumName(), stadium.getLocation(), stadium.getCapacity(), id);
+        String sql = "UPDATE STADIUM SET StadiumName = ?, Location = ?, Capacity = ?, Team = ? WHERE ID = ?";
+        this.getDatabaseConnection().update(sql, stadium.getStadiumName(), stadium.getLocation(), stadium.getCapacity(), stadium.getTeam(), id);
     }
 }

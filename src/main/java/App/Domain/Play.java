@@ -6,9 +6,9 @@ public class Play {
     private String Description;
     private int Quarter;
     private String TimeRemaining;
-    private int PenaltyID;
+    private Integer PenaltyID;
 
-    // Getter and Setter for PlayID
+
     public int getPlayID() {
         return PlayID;
     }
@@ -17,7 +17,7 @@ public class Play {
         this.PlayID = playID;
     }
 
-    // Getter and Setter for GameID
+
     public int getGameID() {
         return GameID;
     }
@@ -26,7 +26,7 @@ public class Play {
         this.GameID = gameID;
     }
 
-    // Getter and Setter for Description
+
     public String getDescription() {
         return Description;
     }
@@ -35,7 +35,7 @@ public class Play {
         this.Description = description;
     }
 
-    // Getter and Setter for Quarter
+
     public int getQuarter() {
         return Quarter;
     }
@@ -44,7 +44,7 @@ public class Play {
         this.Quarter = quarter;
     }
 
-    // Getter and Setter for TimeRemaining
+
     public String getTimeRemaining() {
         return TimeRemaining;
     }
@@ -53,12 +53,13 @@ public class Play {
         this.TimeRemaining = timeRemaining;
     }
 
-    // Getter and Setter for PenaltyID
-    public int getPenaltyID() {
+
+    public Integer getPenaltyID() {
         return PenaltyID;
     }
 
-    public void setPenaltyID(int penaltyID) {
+    public void setPenaltyID(Integer penaltyID) {
         this.PenaltyID = penaltyID;
     }
 }
+
